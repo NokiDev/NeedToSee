@@ -2,33 +2,29 @@
  * Created by bluedragonfly on 6/8/16.
  */
 import { Component, Input } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { ArticleService }     from './article.service';
-import { ArticlesComponent } from './articles.component';
+import { MovieService }     from './movie.service';
+import { MoviesComponent } from './movies.component';
+import { SearchComponent } from './search.component';
 
 @Component({
     selector: 'app',
     template: `
-    <h1>{{title}}</h1>
-    <a [routerLink]="['Articles']">Articles</a>
+    <a routerLink="/movies/">Movies</a>
+    <search></search>
     <router-outlet></router-outlet>
   `,
-    directives: [ROUTER_DIRECTIVES,ArticlesComponent],
+    directives: [ROUTER_DIRECTIVES, SearchComponent],
     providers: [
-        ROUTER_PROVIDERS,
-        ArticleService
+        MovieService
+    ],
+    precompile:[
+        AppComponent,
+        MoviesComponent,
+        SearchComponent
     ]
 })
 
-@RouteConfig([
-    {
-        path: '/articles',
-        name: 'Articles',
-        component: ArticlesComponent
-    }
-])
-
 export class AppComponent {
-    title = 'Japan Vrac';
 }

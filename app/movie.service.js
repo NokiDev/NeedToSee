@@ -1,6 +1,7 @@
 /**
  * Created by bluedragonfly on 6/8/16.
  */
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,25 +12,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var mock_articles_1 = require("./mock-articles");
-var ArticleService = (function () {
-    function ArticleService() {
+var Rx_1 = require('rxjs/Rx');
+var MovieDB = require('moviedb');
+var MovieService = (function () {
+    function MovieService() {
+        this.mvDB = MovieDB("e3eabc398fe370ca4357335a8df07dee");
+        this.searchResult = new Rx_1.Subject();
     }
-    ArticleService.prototype.getArticles = function () {
-        return Promise.resolve(mock_articles_1.ARTICLES);
+    MovieService.prototype.Search = function (query) {
+        var _this = this;
+        this.mvDB.searchMovie({ "query": query }, function (err, res) { _this.searchResult.next(res); });
+        return this.searchResult;
     };
-    ArticleService.prototype.getArticlesSlowly = function () {
-        return new Promise(function (resolve) {
-            return setTimeout(function () { return resolve(mock_articles_1.ARTICLES); }, 2000);
-        } // 2 seconds
-         // 2 seconds
-        );
-    };
-    ArticleService = __decorate([
+    MovieService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], ArticleService);
-    return ArticleService;
-})();
-exports.ArticleService = ArticleService;
-//# sourceMappingURL=article.service.js.map
+    ], MovieService);
+    return MovieService;
+}());
+exports.MovieService = MovieService;
+//# sourceMappingURL=movie.service.js.map

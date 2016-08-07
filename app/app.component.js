@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,33 +12,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by bluedragonfly on 6/8/16.
  */
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
-var article_service_1 = require('./article.service');
-var articles_component_1 = require('./articles.component');
+var router_1 = require('@angular/router');
+var movie_service_1 = require('./movie.service');
+var movies_component_1 = require('./movies.component');
+var search_component_1 = require('./search.component');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Japan Vrac';
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            template: "\n    <h1>{{title}}</h1>\n    <a [routerLink]=\"['Articles']\">Articles</a>\n    <router-outlet></router-outlet>\n  ",
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES, articles_component_1.ArticlesComponent],
+            template: "\n    <a routerLink=\"/movies/\">Movies</a>\n    <search></search>\n    <router-outlet></router-outlet>\n  ",
+            directives: [router_1.ROUTER_DIRECTIVES, search_component_1.SearchComponent],
             providers: [
-                router_deprecated_1.ROUTER_PROVIDERS,
-                article_service_1.ArticleService
+                movie_service_1.MovieService
+            ],
+            precompile: [
+                AppComponent,
+                movies_component_1.MoviesComponent,
+                search_component_1.SearchComponent
             ]
-        }),
-        router_deprecated_1.RouteConfig([
-            {
-                path: '/articles',
-                name: 'Articles',
-                component: articles_component_1.ArticlesComponent
-            }
-        ]), 
+        }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
-})();
+}());
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
