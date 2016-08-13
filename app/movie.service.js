@@ -16,13 +16,18 @@ var Rx_1 = require('rxjs/Rx');
 var MovieDB = require('moviedb');
 var MovieService = (function () {
     function MovieService() {
+        var _this = this;
         this.mvDB = MovieDB("e3eabc398fe370ca4357335a8df07dee");
-        this.searchResult = new Rx_1.Subject();
+        this.searchResult$ = new Rx_1.Subject();
+        this.search$ = new Rx_1.Subject().subscribe(function (query) {
+            _this.mvDB.searchMovie({ "query": query }, function (err, res) {
+                _this.searchResult$.next(res.results);
+            });
+        });
     }
     MovieService.prototype.Search = function (query) {
-        var _this = this;
-        this.mvDB.searchMovie({ "query": query }, function (err, res) { _this.searchResult.next(res); });
-        return this.searchResult;
+        this.search$.next(query);
+        return this.searchResult$;
     };
     MovieService = __decorate([
         core_1.Injectable(), 

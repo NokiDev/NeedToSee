@@ -5,10 +5,9 @@
 export class Movie {
 
     constructor(
-        public id : number,
-        public title : string) {
+        public data:any) {
 
-
+        console.log("NEW MOVIE !! " + data);
     }
 
 }

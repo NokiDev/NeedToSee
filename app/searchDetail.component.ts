@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'searchDetail',
     template: `
-
+        <div>Je suis un test</div>
     `
 
 })
