@@ -19,12 +19,18 @@ var MovieService = (function () {
         var _this = this;
         this.mvDB = MovieDB("e3eabc398fe370ca4357335a8df07dee");
         this.searchResult$ = new Rx_1.Subject();
+        this.searchResult$.share();
         this.search$ = new Rx_1.Subject().subscribe(function (query) {
             _this.mvDB.searchMovie({ "query": query }, function (err, res) {
-                _this.searchResult$.next(res.results);
+                if (res !== undefined) {
+                    _this.searchResult$.next(res.results);
+                }
             });
         });
     }
+    MovieService.prototype.BuildImagePath = function (path) {
+        return "http://image.tmdb.org/t/p/w185/" + path;
+    };
     MovieService.prototype.Search = function (query) {
         this.search$.next(query);
         return this.searchResult$;

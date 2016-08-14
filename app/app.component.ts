@@ -6,6 +6,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MovieService }     from './movie.service';
 import { MoviesComponent } from './movies.component';
+import { MovieComponent } from './movie.component';
 import { SearchComponent } from './search.component';
 
 @Component({
@@ -22,6 +23,7 @@ import { SearchComponent } from './search.component';
     precompile:[
         AppComponent,
         MoviesComponent,
+        MovieComponent,
         SearchComponent
     ]
 })

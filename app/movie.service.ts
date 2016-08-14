@@ -17,13 +17,19 @@ export class MovieService {
 
     constructor(){
         this.searchResult$ = new Subject();
+
+        this.searchResult$.share();
         this.search$ = new Subject<string>().subscribe((query:string)=> {
             this.mvDB.searchMovie({"query": query}, (err:any, res:any) => {
-
+                if(res !== undefined){
                     this.searchResult$.next(res.results);
-
-            })
+                }
+            });
         });
+    }
+
+    BuildImagePath(path : string){
+        return "http://image.tmdb.org/t/p/w185/" + path;
     }
 
     Search(query: string) : Subject<any> {

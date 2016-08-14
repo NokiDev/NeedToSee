@@ -9,5 +9,5 @@ import {AppComponent} from "./app.component";
 export const AppRoutes = [
     {path: '', component : AppComponent},
     {path: 'movies', component: MoviesComponent},
-    {path: 'movie/:id', component: MovieComponent}
+    {path: 'movie/:title', component: MovieComponent}
 ];

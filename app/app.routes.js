@@ -8,6 +8,6 @@ var app_component_1 = require("./app.component");
 exports.AppRoutes = [
     { path: '', component: app_component_1.AppComponent },
     { path: 'movies', component: movies_component_1.MoviesComponent },
-    { path: 'movie/:id', component: movie_component_1.MovieComponent }
+    { path: 'movie/:title', component: movie_component_1.MovieComponent }
 ];
 //# sourceMappingURL=app.routes.js.map

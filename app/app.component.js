@@ -15,6 +15,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var movie_service_1 = require('./movie.service');
 var movies_component_1 = require('./movies.component');
+var movie_component_1 = require('./movie.component');
 var search_component_1 = require('./search.component');
 var AppComponent = (function () {
     function AppComponent() {
@@ -30,6 +31,7 @@ var AppComponent = (function () {
             precompile: [
                 AppComponent,
                 movies_component_1.MoviesComponent,
+                movie_component_1.MovieComponent,
                 search_component_1.SearchComponent
             ]
         }), 

@@ -6,8 +6,6 @@ export class Movie {
 
     constructor(
         public data:any) {
-
-        console.log("NEW MOVIE !! " + data);
     }
 
 }
