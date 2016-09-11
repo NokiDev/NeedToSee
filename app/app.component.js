@@ -12,28 +12,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by bluedragonfly on 6/8/16.
  */
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var movie_service_1 = require('./movie.service');
-var movies_component_1 = require('./movies.component');
-var movie_component_1 = require('./movie.component');
-var search_component_1 = require('./search.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            template: "\n    <a routerLink=\"/movies/\">Movies</a>\n    <search></search>\n    <router-outlet></router-outlet>\n  ",
-            directives: [router_1.ROUTER_DIRECTIVES, search_component_1.SearchComponent],
-            providers: [
-                movie_service_1.MovieService
-            ],
-            precompile: [
-                AppComponent,
-                movies_component_1.MoviesComponent,
-                movie_component_1.MovieComponent,
-                search_component_1.SearchComponent
-            ]
+            template: "\n    <header style=\"background-color: #00b3ee; height : 200px;\">\n        <div style=\"border-bottom: black solid 2px;\">\n            <h1 style=\"text-align:center;color:white;\">NEED TO SEE v0.001</h1>\n        </div>\n        <search></search>\n    </header>\n    <router-outlet></router-outlet>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

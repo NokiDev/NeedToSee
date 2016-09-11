@@ -11,7 +11,7 @@ import {Movie} from './movie.model';
         <movie *ngFor="let movie of movies">
     `
 })
-export class MoviesComponent {
+export class MovieListComponent {
     movies : Array<Movie>;
 
 
